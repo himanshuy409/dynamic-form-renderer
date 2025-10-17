@@ -1,0 +1,70 @@
+<mat-card class="form-card">
+    <h2 class="form-title">{{ data.title }}</h2>
+    <form [formGroup]="form">
+        <div class="form-field" *ngFor="let field of data.fields">
+            <!-- Text Input -->
+            <mat-form-field *ngIf="field.type === 'text'" appearance="outline">
+                <mat-label>{{ field.label }}</mat-label>
+                <input matInput [formControlName]="field.name" />
+                <mat-error *ngIf="form.get(field.name)?.invalid && form.get(field.name)?.touched">
+                    {{ getErrorMessage(field.name) }}
+                </mat-error>
+            </mat-form-field>
+
+            <!-- Textarea -->
+            <mat-form-field *ngIf="field.type === 'textarea'" appearance="outline">
+                <mat-label>{{ field.label }}</mat-label>
+                <textarea matInput [formControlName]="field.name"></textarea>
+                <mat-error *ngIf="form.get(field.name)?.invalid && form.get(field.name)?.touched">
+                    {{ getErrorMessage(field.name) }}
+                </mat-error>
+            </mat-form-field>
+            
+            <!-- Date Picker -->
+            <mat-form-field *ngIf="field.type === 'date'" appearance="outline">
+                <mat-label>{{ field.label }}</mat-label>
+                <input matInput [matDatepicker]="picker" [formControlName]="field.name"/>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="form.get(field.name)?.invalid && form.get(field.name)?.touched">
+                    {{ getErrorMessage(field.name) }}
+                </mat-error>
+            </mat-form-field>
+
+            <!-- Dropdown -->
+            <mat-form-field *ngIf="field.type === 'dropdown'" appearance="outline">
+                <mat-label>{{ field.label }}</mat-label>
+                <mat-select [formControlName]="field.name">
+                    <mat-option *ngFor="let option of field.options" [value]="option">{{ option }}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.get(field.name)?.invalid && form.get(field.name)?.touched">
+                    {{ getErrorMessage(field.name) }}
+                </mat-error>
+            </mat-form-field>
+
+            <!-- Multi-select -->
+            <mat-form-field *ngIf="field.type === 'multiselect'" appearance="outline">
+                <mat-label>{{ field.label }}</mat-label>
+                <mat-select [formControlName]="field.name" multiple>
+                    <mat-option *ngFor="let option of field.options" [value]="option">{{ option }}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.get(field.name)?.invalid && form.get(field.name)?.touched">
+                    {{ getErrorMessage(field.name) }}
+                </mat-error>
+            </mat-form-field>
+
+            <!-- Checkbox -->
+            <div class="mb-2" *ngIf="field.type === 'checkbox'">
+                <mat-checkbox color="primary" [formControlName]="field.name">
+                    {{ field.label }}
+                </mat-checkbox>
+                <mat-error *ngIf="form.get(field.name)?.invalid && form.get(field.name)?.touched">
+                    {{ getErrorMessage(field.name) }}
+                </mat-error>
+            </div>
+        </div>
+        <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="submit()">
+            Submit
+        </button>
+    </form>
+</mat-card>
