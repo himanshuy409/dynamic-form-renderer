@@ -1,6 +1,6 @@
 # DynamicFormRenderer
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.5.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.21.
 
 ## To run the project in development mode
 git clone from https://github.com/himanshuy409/dynamic-form-renderer.git or extract zip file
