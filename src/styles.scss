@@ -2,3 +2,24 @@
 
 html, body { height: 100%; overflow: hidden;}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+h1 {
+    font-weight: bold !important;
+    text-align: center;
+}
+
+@for $i from 1 through 5 {
+    $value: $i * 0.5;
+    $suffix: '';
+
+    @if $value == 1 or $value == 2 {
+        $suffix: #{$value};
+    } @else {
+        $whole: floor($value);
+        $suffix: "#{$whole}-5";
+    }
+
+    .p-#{$suffix} {
+        padding: #{$value}rem !important;
+    }
+}

@@ -1,4 +1,10 @@
-<div class="container">
-  <app-dynamic-form [data]="userRegistration"></app-dynamic-form>
-  <app-dynamic-form [data]="employeeInformation"></app-dynamic-form>
+<mat-toolbar>
+  <span class="application-name">Application</span>
+  <nav>
+    <a mat-button routerLink="/dynamic-form-example" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Form Renderer</a>
+    <a mat-button routerLink="/signal-example" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Signals</a>
+  </nav>
+</mat-toolbar>
+<div class="p-1">
+  <router-outlet></router-outlet>
 </div>

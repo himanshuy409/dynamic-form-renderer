@@ -1,5 +1,18 @@
-.container {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
+.mat-toolbar {
+    background-color: cornflowerblue;
+    color: white;
+}
+
+.application-name {
+    font-weight: bold;
+    margin-right: 1rem;
+}
+
+.mat-mdc-button {
+    color: white !important;
+}
+
+.active {
+    border-bottom: 2px solid white;
+    font-weight: bold;
 }
