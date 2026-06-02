@@ -1,0 +1,35 @@
+<div class="shopping-cart-container">
+    @if(!allCartItems().length) {
+        <p class="no-items-message">Add items to cart</p>
+    } @else {
+        <div class="products-section">
+            @for(item of allCartItems(); track item.id) {
+                <div class="product-card">
+                    <div class="product">
+                        <div class="circle"></div>
+                        <div class="product-details">
+                            <p class="product-heading">{{ item.name }}</p>
+                            <p class="product-cost">₹{{ item.price }}</p>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <div class="product-details">
+                            <p class="product-qty">Quantity: {{ item.quantity }}</p>
+                            <p class="product-total">Sub Total: ₹{{ item.price * item.quantity }}</p>
+                        </div>
+                        <button mat-raised-button color="warn" (click)="remove(item.id)">Remove</button>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="price-section">
+            <div class="price-card">
+                <p><strong>Total Items: </strong> <span>{{ count() }}</span></p>
+                <p><strong>Total Price: </strong> <span>₹{{ total() }}</span></p>
+            </div>
+            <button mat-raised-button color="warn" (click)="clear()">
+                Clear Cart
+            </button>
+        </div>
+    }
+</div>

@@ -1,0 +1,14 @@
+<div class="products-container">
+    @for(product of products; track product.id) {
+        <div class="product">
+            <div class="product-details">
+                <p class="product-heading">{{ product.name }}</p>
+                <div class="circle"></div>
+                <p class="product-cost">₹{{ product.price }}</p>
+            </div>
+            <button mat-raised-button color="primary" (click)="add(product)">
+                Add To Cart
+            </button>
+        </div>
+    }
+</div>
